@@ -1693,8 +1693,11 @@ void APIENTRY glTextureSubImage1DEXT_ARB( GLuint texture_, GLenum target_, GLint
     RemapGLName( glTextureSubImage1D )( texture_, level_, xoffset_, width_, format_, type_, pixels_ );
 }
 void APIENTRY glTextureSubImage2DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLsizei width_, GLsizei height_, GLenum format_, GLenum type_, const void *pixels_ ) {
-    (void)target_;
-    RemapGLName( glTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, width_, height_, format_, type_, pixels_ );
+    if ( target_ >= GL_TEXTURE_CUBE_MAP_POSITIVE_X && target_ <= GL_TEXTURE_CUBE_MAP_NEGATIVE_Z ) {
+        RemapGLName( glTextureSubImage3D )( texture_, level_, xoffset_, yoffset_, target_ - GL_TEXTURE_CUBE_MAP_POSITIVE_X, width_, height_, 1, format_, type_, pixels_ );
+    } else {
+        RemapGLName( glTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, width_, height_, format_, type_, pixels_ );
+    }
 }
 void APIENTRY glTextureSubImage3DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLint zoffset_, GLsizei width_, GLsizei height_, GLsizei depth_, GLenum format_, GLenum type_, const GLvoid *pixels_ ) {
     (void)target_;
@@ -1705,8 +1708,11 @@ void APIENTRY glCompressedTextureSubImage1DEXT_ARB( GLuint texture_, GLenum targ
     RemapGLName( glCompressedTextureSubImage1D )( texture_, level_, xoffset_, width_, format_, imageSize_, bits_ );
 }
 void APIENTRY glCompressedTextureSubImage2DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLsizei width_, GLsizei height_, GLenum format_, GLsizei imageSize_, const void *bits_ ) {
-    (void)target_;
-    RemapGLName( glCompressedTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, width_, height_, format_, imageSize_, bits_ );
+    if ( target_ >= GL_TEXTURE_CUBE_MAP_POSITIVE_X && target_ <= GL_TEXTURE_CUBE_MAP_NEGATIVE_Z ) {
+        RemapGLName( glCompressedTextureSubImage3D )( texture_, level_, xoffset_, yoffset_, target_ - GL_TEXTURE_CUBE_MAP_POSITIVE_X, width_, height_, 1, format_, imageSize_, bits_ );
+    } else {
+        RemapGLName( glCompressedTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, width_, height_, format_, imageSize_, bits_ );
+    }
 }
 void APIENTRY glCompressedTextureSubImage3DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLint zoffset_, GLsizei width_, GLsizei height_, GLsizei depth_, GLenum format_, GLsizei imageSize_, const void *bits_ ) {
     (void)target_;
@@ -1717,8 +1723,11 @@ void APIENTRY glCopyTextureSubImage1DEXT_ARB( GLuint texture_, GLenum target_, G
     RemapGLName( glCopyTextureSubImage1D )( texture_, level_, xoffset_, x_, y_, width_ );
 }
 void APIENTRY glCopyTextureSubImage2DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLint x_, GLint y_, GLsizei width_, GLsizei height_ ) {
-    (void)target_;
-    RemapGLName( glCopyTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, x_, y_, width_, height_ );
+    if ( target_ >= GL_TEXTURE_CUBE_MAP_POSITIVE_X && target_ <= GL_TEXTURE_CUBE_MAP_NEGATIVE_Z ) {
+        RemapGLName( glCopyTextureSubImage3D )( texture_, level_, xoffset_, yoffset_, target_ - GL_TEXTURE_CUBE_MAP_POSITIVE_X, x_, y_, width_, height_ );
+    } else {
+        RemapGLName( glCopyTextureSubImage2D )( texture_, level_, xoffset_, yoffset_, x_, y_, width_, height_ );
+    }
 }
 void APIENTRY glCopyTextureSubImage3DEXT_ARB( GLuint texture_, GLenum target_, GLint level_, GLint xoffset_, GLint yoffset_, GLint zoffset_, GLint x_, GLint y_, GLsizei width_, GLsizei height_ ) {
     (void)target_;
