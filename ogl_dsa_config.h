@@ -19,7 +19,7 @@
 #define OGL_DSA_OPENGL_EXT_HEADER           "glext.h"
 /**
  * Include file for platform specific open gl extension header.
- * Only required if OGL_DSA_INCLUDE_FPLATFORM_EXT_HEADER is defined.
+ * Only required if OGL_DSA_INCLUDE_PLATFORM_EXT_HEADER is defined.
  */
 #define OGL_DSA_OPENGL_PLATFORM_EXT_HEADER  "wglext.h"
 /**
@@ -78,7 +78,7 @@
 /**
  * Define this if the open gl platform specific extension should be included.
  */
-#define OGL_DSA_INCLUDE_FPLATFORM_EXT_HEADER
+#define OGL_DSA_INCLUDE_PLATFORM_EXT_HEADER
 /** 
  * Change this to match the target system
  */
