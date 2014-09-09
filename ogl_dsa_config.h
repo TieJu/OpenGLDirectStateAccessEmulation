@@ -82,4 +82,4 @@
 /** 
  * Change this to match the target system
  */
-#define OGL_DSA_DEFINE_THREAD_LOCAL_VARIABLE(type_, name_) static thread_local
+#define OGL_DSA_DEFINE_THREAD_LOCAL_VARIABLE(type_, name_) static thread_local type_ name_
