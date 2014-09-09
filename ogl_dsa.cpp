@@ -236,7 +236,7 @@ struct context {
 };
 
 context& get_context() {
-    static thread_local context ctx;
+    OGL_DSA_DEFINE_THREAD_LOCAL_VARIABLE( context, ctx );
     return ctx;
 }
 
