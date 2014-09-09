@@ -79,3 +79,7 @@
  * Define this if the open gl platform specific extension should be included.
  */
 #define OGL_DSA_INCLUDE_FPLATFORM_EXT_HEADER
+/** 
+ * Change this to match the target system
+ */
+#define OGL_DSA_DEFINE_THREAD_LOCAL_VARIABLE(type_, name_) static thread_local
