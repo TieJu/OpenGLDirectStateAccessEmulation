@@ -29,13 +29,13 @@
  * each function pointer name.
  * Default is name_
  */
-#define RemapGLName(name_)          name_
+#define RemapGLName(name_)                  name_
 /**
  * This defines the function that should be called to get a
  * function pointer from open gl.
  * Default id SDL_GL_GetProcAddress(name_)
  */
-#define GetProcAddress(name_)       SDL_GL_GetProcAddress(name_)
+#define GetProcAddress(name_)               SDL_GL_GetProcAddress(name_)
 
 #if 1
 /**
@@ -44,7 +44,7 @@
  * This variant uses decltype to cast the return value of 
  * GetProcAddress to match the pointer type.
  */
-#define CheckedFunctionLoad(name_)  ( ( RemapGLName(name_) = reinterpret_cast<decltype( RemapGLName(name_) )>>( GetProcAddress(#name_) ) ) != nullptr )
+#define CheckedFunctionLoad(name_)          ( ( RemapGLName(name_) = reinterpret_cast<decltype( RemapGLName(name_) )>>( GetProcAddress(#name_) ) ) != nullptr )
 #else
 /**
  * This handles the loading of the entry points and checking
@@ -53,7 +53,7 @@
  * type-checking. Only use this if your compile can't handle
  * decltype.
  */
-#define CheckedFunctionLoad(name_)  ( *reinterpret_cast<void**>( &RemapGLName(name_) ) = GetProcAddress(#name_) ) != nullptr )
+#define CheckedFunctionLoad(name_)          ( *reinterpret_cast<void**>( &RemapGLName(name_) ) = GetProcAddress(#name_) ) != nullptr )
 #endif
 
 /**
@@ -61,13 +61,6 @@
  */
 //#define GL_DSA_SUPRESS_64BIT_WARNINGS
 
-#if defined(_WIN_32) || defined(__WIN32__) || defined(__WINDOWS__) || defined(__TOS_WIN__)
-#define OGL_DSA_PLATFORM_WINDOWS
-#else
-#error "Unsupported system!"
-#endif
-//#define OGL_DSA_PLATFORM_OSX
-//#define OGL_DSA_PLATFORM_LINUX
 /**
  * If this is defined, ogl_dsa.cpp contains
  * definition of all interface pointers
