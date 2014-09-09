@@ -35,7 +35,7 @@
  * function pointer from open gl.
  * Default id SDL_GL_GetProcAddress(name_)
  */
-#define GetProcAddress(name_)               SDL_GL_GetProcAddress(name_)
+#define oglGetProcAddress(name_)               SDL_GL_GetProcAddress(name_)
 
 #if 1
 /**
@@ -44,7 +44,7 @@
  * This variant uses decltype to cast the return value of 
  * GetProcAddress to match the pointer type.
  */
-#define CheckedFunctionLoad(name_)          ( ( RemapGLName(name_) = reinterpret_cast<decltype( RemapGLName(name_) )>>( GetProcAddress(#name_) ) ) != nullptr )
+#define CheckedFunctionLoad(name_)          ( ( RemapGLName(name_) = reinterpret_cast<decltype( RemapGLName(name_) )>>( oglGetProcAddress(#name_) ) ) != nullptr )
 #else
 /**
  * This handles the loading of the entry points and checking
