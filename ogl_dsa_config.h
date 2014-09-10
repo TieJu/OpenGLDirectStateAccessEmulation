@@ -59,7 +59,7 @@
 /**
  * Uncomment this on x64 to disable some warnings.
  */
-//#define GL_DSA_SUPRESS_64BIT_WARNINGS
+//#define GL_DSA_SUPPRESS_64BIT_WARNINGS
 
 /**
  * If this is defined, ogl_dsa.cpp contains
