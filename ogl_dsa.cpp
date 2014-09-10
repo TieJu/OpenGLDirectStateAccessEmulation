@@ -1662,8 +1662,8 @@ void APIENTRY glTextureBufferRangeEXT_ARB( GLuint texture_, GLenum target_, GLen
 #if PTRDIFF_MAX != INT_MAX
     // in x64 GLsizeiptr is 64bit and GLsizei is 32bit
     assert( size_ <= INT_MAX );
-#if !defined(GL_DSA_SUPRESS_64BIT_WARNINGS)
-#pragma message("OpenGL direct state system: narrowing from GLsizeiptr to GLsizei, define GL_DSA_SUPRESS_64BIT_WARNINGS")
+#if !defined(GL_DSA_SUPPRESS_64BIT_WARNINGS)
+#pragma message("OpenGL direct state system: narrowing from GLsizeiptr to GLsizei, define GL_DSA_SUPPRESS_64BIT_WARNINGS to disable this message")
 #endif
 #endif
     RemapGLName( glTextureBufferRange )( texture_, internalformat_, buffer_, offset_, static_cast<GLsizei>( size_ ) );
